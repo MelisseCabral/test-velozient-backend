@@ -7,6 +7,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
 import { ProductDTO } from './product.dto';
@@ -21,23 +22,17 @@ export class ProductController {
     return await this.ProductService.create(data);
   }
 
-  @Get('/product')
-  async findAll() {
-    return await this.ProductService.findAll();
-  }
-
   @Get('/product/:id')
   async findOne(@Param('id') id: string) {
     return await this.ProductService.findOne(id);
   }
 
-  @Get('/product/search/:search')
-  async findQuery(@Param('search') search: string) {
+  @Get('/product/')
+  async findQuery(@Query('search') search: string) {
     return await this.ProductService.findQuery(search);
   }
 
   @Patch('/product/edit/:id')
-  @ApiBearerAuth('access-token')
   async updateOne(@Param('id') id: string, @Body() data: ProductDTO) {
     return await this.ProductService.updateOne(id, data);
   }

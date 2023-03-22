@@ -28,7 +28,7 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(AuthVerification).forRoutes(OrderController);
     consumer
-      .apply(AuthVerification)
+      .apply()
       .forRoutes(
         { path: '/order', method: RequestMethod.POST },
         { path: '/product', method: RequestMethod.POST },
