@@ -9,8 +9,8 @@ import {
   Post,
 } from '@nestjs/common';
 import { ApiBearerAuth } from '@nestjs/swagger';
-import { OrderDTO } from './Order.dto';
-import OrderService from './order.service';
+import { OrderDTO } from '../orders/order.dto';
+import OrderService from '../orders/order.service';
 
 @Controller()
 export default class OrderController {
